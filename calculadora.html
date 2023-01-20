@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    	<!-- Latest compiled and minified CSS -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+
+    <title>Document</title>
+
+    <style>
+        .calculadora{
+        margin-top: 40px;
+        border: solid 1px #000;
+        padding: 20px;
+        background-color: #2E2E2E;
+        border-radius: 10px;
+        box-shadow: 1px 1px 5px #000;
+        }
+
+        .resultado{
+            text-align: end;
+            margin-bottom: 20px;
+        }
+
+        .btn{
+            margin: 5px;
+            width: 60px;
+            height: 50px;
+        }
+
+        .clear, .zero{
+            width: 130px;
+        }
+
+        .igual{
+            height: 110px;
+            margin-top: -55px;
+        }
+
+    </style>
+    
+</head>
+<body>
+    
+    <div class="container">
+        <div class="row">
+            <div class="col d-flex justify-content-center">
+
+                <div class="calculadora">
+                    <input type="text" id="resultado" class="form-control resultado" placeholder="0" disabled="disabled">
+
+                    <div class="row">
+                        <button onclick="calcular('acao', 'c')" class="btn btn-dark btn-lg clear">C</button>
+                        <button onclick="calcular('acao', '/')"  class="btn btn-dark btn-lg">/</button>
+                        <button onclick="calcular('acao', '*')"  class="btn btn-dark btn-lg">x</button>
+                    </div>
+
+                    <div class="row">
+                        <button onclick="calcular('valor', '7')"  class="btn btn-dark btn-lg">7</button>
+                        <button onclick="calcular('valor', '8')" class="btn btn-dark btn-lg">8</button>
+                        <button onclick="calcular('valor', '9')" class="btn btn-dark btn-lg">9</button>
+                        <button onclick="calcular('acao', '-')" class="btn btn-dark btn-lg">-</button>
+                    </div>
+
+                    <div class="row">
+                        <button onclick="calcular('valor', '4')" class="btn btn-dark btn-lg">4</button>
+                        <button onclick="calcular('valor', '5')" class="btn btn-dark btn-lg">5</button>
+                        <button onclick="calcular('valor', '6')" class="btn btn-dark btn-lg">6</button>
+                        <button onclick="calcular('acao', '+')" class="btn btn-dark btn-lg">+</button>
+                    </div>
+
+                    <div class="row">
+                        <button onclick="calcular('valor', '1')" class="btn btn-dark btn-lg">1</button>
+                        <button onclick="calcular('valor', '2')" class="btn btn-dark btn-lg">2</button>
+                        <button onclick="calcular('valor', '3')" class="btn btn-dark btn-lg">3</button>
+                    </div>
+
+                    <div class="row">
+                        <button onclick="calcular('valor', '0')" class="btn btn-dark btn-lg zero">0</button>
+                        <button onclick="calcular('acao', '.')" class="btn btn-dark btn-lg">.</button>
+                        <button onclick="calcular('acao', '=')" class="btn btn-dark btn-lg igual">=</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function calcular(tipo, valor){
+           if(tipo === "acao"){
+             if(valor === '/' || valor ==='*' || valor === '+' || valor === '-' || valor === '.'){
+
+                document.getElementById("resultado").value += valor
+
+            }if(valor == '='){
+                const valor_total = document.getElementById("resultado").value
+
+                document.getElementById("resultado").value = eval(valor_total)
+
+            }if(valor == "c"){
+            document.getElementById("resultado").value = ""
+           }
+
+           }
+           else if(tipo == "valor"){
+            document.getElementById("resultado").value += valor
+           }
+
+          
+
+        }
+    </script>
+</body>
+</html>
